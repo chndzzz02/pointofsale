@@ -1,0 +1,436 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import 'futuristic.css';
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Poppins:wght@600;700;800&display=swap');
+
+:root {
+    --primary: #010101;
+    --primary-dark: #C1121F;
+    --secondary: #1A1A1A;
+    --gray-light: #F8F9FA;
+    --gray-border: #E5E5E5;
+    --text-dark: #1A1A1A;
+    --text-muted: #6C757D;
+    /* tambahan warna premium */
+    --premium-purple: #764ba2;
+    --premium-purple-dark: #5a367a;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-color: #FFFFFF;
+    padding-top: 80px; /* Ruang untuk navbar sticky */
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Navbar Sticky seperti Zalora */
+.navbar {
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    padding: 0.75rem 0;
+    transition: all 0.2s ease;
+}
+
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+    color: var(--secondary);
+}
+
+.navbar-brand:hover {
+    color: var(--primary);
+}
+
+/* Search bar */
+.search-form {
+    width: 100%;
+    max-width: 400px;
+}
+.search-input {
+    border-radius: 30px 0 0 30px;
+    border: 1px solid var(--gray-border);
+    border-right: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+}
+.search-btn {
+    border-radius: 0 30px 30px 0;
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+.search-btn:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Navbar link */
+.nav-link {
+    font-weight: 500;
+    color: var(--secondary);
+    margin: 0 0.25rem;
+}
+.nav-link:hover {
+    color: var(--primary);
+}
+.nav-icon {
+    font-size: 1.3rem;
+    position: relative;
+}
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.45rem;
+    border-radius: 20px;
+}
+
+/* Hero Carousel (jika masih menggunakan carousel biasa, biarkan) */
+.hero-carousel {
+    margin-bottom: 2rem;
+}
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+.carousel-caption {
+    background: linear-gradient(0deg, rgba(0,0,0,0.5), transparent);
+    border-radius: 1rem;
+}
+
+/* Product Card (Zalora style) */
+.product-card {
+    border: none;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: white;
+    margin-bottom: 1.5rem;
+}
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+.product-card img {
+    height: 260px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.product-card:hover img {
+    transform: scale(1.02);
+}
+.product-card .card-body {
+    padding: 1rem;
+}
+.product-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-price {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.btn-add-cart {
+    background-color: var(--primary);
+    border: none;
+    border-radius: 30px;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    width: 100%;
+}
+.btn-add-cart:hover {
+    background-color: var(--primary-dark);
+}
+.btn-outline-add {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+.btn-outline-add:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Tombol Umum */
+.btn-primary-custom {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    border-radius: 30px;
+    padding: 0.5rem 1.5rem;
+    font-weight: 600;
+}
+.btn-primary-custom:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+}
+
+/* Footer */
+footer {
+    background-color: #1A1A1A;
+    color: #CCCCCC;
+    margin-top: 4rem;
+    padding: 3rem 0 2rem;
+}
+footer a {
+    color: #CCCCCC;
+    text-decoration: none;
+}
+footer a:hover {
+    color: white;
+}
+
+/* Form styling */
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    border: 1px solid var(--gray-border);
+    padding: 0.6rem 1rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.2rem rgba(230,57,70,0.25);
+}
+
+/* Cart & Checkout */
+.cart-item {
+    border-bottom: 1px solid var(--gray-border);
+    padding: 1rem 0;
+}
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+.quantity-input {
+    width: 70px;
+    text-align: center;
+}
+.order-summary {
+    background-color: var(--gray-light);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+/* Dashboard cards */
+.dashboard-card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: 0.2s;
+    border: 1px solid var(--gray-border);
+}
+.dashboard-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: var(--secondary);
+    border-radius: 30px;
+    margin: 0 3px;
+}
+.pagination .active .page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: white;
+}
+
+/* ============================================= */
+/* GAYA PREMIUM UNTUK HOMEPAGE (HERO, KATEGORI, PRODUCT CARD PREMIUM, STATS) */
+/* ============================================= */
+
+/* Hero Premium (tanpa carousel, layout gradien) */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, var(--premium-purple) 100%);
+    border-radius: 0 0 50px 50px;
+    margin-bottom: 3rem;
+}
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom;
+    background-size: cover;
+    opacity: 0.3;
+    pointer-events: none;
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+}
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease;
+}
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+.btn-hero {
+    background: white;
+    color: var(--premium-purple);
+    border-radius: 50px;
+    padding: 12px 35px;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    animation: fadeInUp 1s ease 0.4s both;
+    display: inline-block;
+    text-decoration: none;
+}
+.btn-hero:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    color: var(--premium-purple-dark);
+    background: white;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Category Cards */
+.category-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+.category-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+.category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+.category-card h6 {
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Product Card Premium (untuk tampilan baru) */
+.product-card-premium {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.3s;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.product-card-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+.product-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    z-index: 2;
+}
+.product-img {
+    height: 220px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+.product-card-premium:hover .product-img {
+    transform: scale(1.05);
+}
+.product-info {
+    padding: 1.2rem;
+}
+.product-title-premium {
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product-price-premium {
+    color: var(--primary);
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+.btn-add-premium {
+    background: var(--premium-purple);
+    border: none;
+    border-radius: 30px;
+    padding: 8px;
+    font-weight: 600;
+    width: 100%;
+    transition: 0.3s;
+    color: white;
+}
+.btn-add-premium:hover {
+    background: var(--premium-purple-dark);
+    transform: scale(1.02);
+    color: white;
+}
+.btn-add-premium i {
+    margin-right: 5px;
+}
+
+/* Stats Section */
+.stats-section {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 30px;
+    padding: 50px 0;
+    margin: 50px 0;
+}
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--premium-purple);
+}
+.stat-label {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Responsive untuk gaya premium */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2rem; }
+    .hero-content { padding: 60px 0; }
+    .product-img { height: 180px; }
+    .stat-number { font-size: 1.8rem; }
+}
