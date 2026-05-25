@@ -10,49 +10,105 @@ body{
     background:#f4f7fb;
 }
 
-/* WRAPPER */
+/* =========================
+   WRAPPER
+========================= */
 
 .edit-product-wrapper{
     padding:10px 5px 40px;
+    animation:fadeUp .5s ease;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .page-header{
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(135deg,#ffffff 0%,#f8fafc 100%);
+    border:1px solid #e2e8f0;
+    border-radius:30px;
+    padding:34px 36px;
     margin-bottom:30px;
+    box-shadow:
+        0 12px 40px rgba(15,23,42,.05);
+}
+
+.page-header::before{
+    content:'';
+    position:absolute;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,
+        rgba(99,102,241,.12) 0%,
+        rgba(99,102,241,0) 70%);
+    top:-120px;
+    right:-80px;
+}
+
+.header-content{
+    position:relative;
+    z-index:2;
+}
+
+.header-badge{
+    width:max-content;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(99,102,241,.10);
+    color:#4f46e5;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:18px;
 }
 
 .page-title{
-    font-size:34px;
+    font-size:38px;
     font-weight:800;
-    color:#111827;
-    letter-spacing:-1px;
-    margin-bottom:6px;
+    color:#0f172a;
+    letter-spacing:-1.5px;
+    margin-bottom:10px;
+    line-height:1.1;
 }
 
 .page-subtitle{
-    color:#6b7280;
-    font-size:14px;
+    color:#64748b;
+    font-size:15px;
+    line-height:1.7;
+    max-width:680px;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .modern-card{
     background:white;
     border:none;
-    border-radius:32px;
+    border-radius:30px;
     overflow:hidden;
     box-shadow:
         0 10px 40px rgba(15,23,42,.05);
 }
 
-/* BODY */
-
 .modern-card-body{
     padding:40px;
 }
 
-/* LABEL */
+/* =========================
+   FORM
+========================= */
+
+.form-section{
+    margin-bottom:10px;
+}
 
 .form-label{
     font-size:14px;
@@ -60,8 +116,6 @@ body{
     color:#374151;
     margin-bottom:10px;
 }
-
-/* INPUT */
 
 .form-control,
 .form-select{
@@ -76,58 +130,63 @@ body{
     color:#111827;
 }
 
+.form-control:focus,
+.form-select:focus{
+    background:white;
+    box-shadow:
+        0 0 0 4px rgba(99,102,241,.10) !important;
+}
+
 textarea.form-control{
     min-height:140px;
     resize:none;
 }
-
-.form-control:focus,
-.form-select:focus{
-    background:white;
-    border:none;
-    box-shadow:
-        0 0 0 4px rgba(17,24,39,.06) !important;
-}
-
-/* FILE */
-
-input[type="file"]{
-    padding:14px;
-}
-
-/* IMAGE */
-
-.preview-wrapper{
-    background:#f8fafc;
-    border-radius:24px;
-    padding:20px;
-    border:1px solid #eef2f7;
-    display:inline-block;
-}
-
-.product-preview{
-    width:180px;
-    height:180px;
-    object-fit:cover;
-    border-radius:24px;
-    transition:.25s ease;
-}
-
-.product-preview:hover{
-    transform:scale(1.02);
-}
-
-/* INVALID */
 
 .invalid-feedback{
     margin-top:8px;
     font-size:13px;
 }
 
-/* BUTTON PRIMARY */
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
+.image-preview-wrapper{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.preview-image{
+    width:110px;
+    height:110px;
+    border-radius:24px;
+    object-fit:cover;
+    border:3px solid #eef2ff;
+    box-shadow:
+        0 8px 24px rgba(99,102,241,.10);
+}
+
+.preview-placeholder{
+    width:110px;
+    height:110px;
+    border-radius:24px;
+    background:#f8fafc;
+    border:2px dashed #cbd5e1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#94a3b8;
+    font-size:32px;
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 .btn-modern-primary{
-    background:linear-gradient(135deg,#111827,#1f2937);
+    background:linear-gradient(135deg,#4f46e5,#6366f1);
     color:white;
     border:none;
     padding:14px 30px;
@@ -139,17 +198,15 @@ input[type="file"]{
     align-items:center;
     gap:10px;
     box-shadow:
-        0 10px 25px rgba(17,24,39,.15);
+        0 10px 25px rgba(79,70,229,.18);
 }
 
 .btn-modern-primary:hover{
     transform:translateY(-1px);
     color:white;
     box-shadow:
-        0 14px 30px rgba(17,24,39,.22);
+        0 14px 30px rgba(79,70,229,.25);
 }
-
-/* BUTTON SECONDARY */
 
 .btn-modern-secondary{
     background:#f3f4f6;
@@ -171,17 +228,9 @@ input[type="file"]{
     transform:translateY(-1px);
 }
 
-/* SECTION */
-
-.form-section{
-    margin-bottom:10px;
-}
-
-/* ANIMATION */
-
-.fade-up{
-    animation:fadeUp .5s ease;
-}
+/* =========================
+   ANIMATION
+========================= */
 
 @keyframes fadeUp{
     from{
@@ -194,22 +243,34 @@ input[type="file"]{
     }
 }
 
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    .page-header{
+        padding:26px 22px;
+        border-radius:24px;
+    }
+
+    .page-title{
+        font-size:30px;
+    }
+
+    .page-subtitle{
+        font-size:14px;
+    }
+
+    .modern-card-body{
+        padding:24px;
+    }
+
+}
+
 </style>
 
-<div class="container-fluid px-4 edit-product-wrapper fade-up">
-
-    {{-- HEADER --}}
-    <div class="page-header">
-
-        <h1 class="page-title">
-            Edit Produk
-        </h1>
-
-        <div class="page-subtitle">
-            Perbarui informasi produk dengan tampilan modern dan elegan
-        </div>
-
-    </div>
+<div class="container-fluid px-4 edit-product-wrapper">
 
     {{-- CARD --}}
     <div class="modern-card">
@@ -227,7 +288,7 @@ input[type="file"]{
 
                 <div class="row g-4">
 
-                    {{-- NAMA --}}
+                    {{-- NAMA PRODUK --}}
                     <div class="col-md-6">
 
                         <div class="form-section">
@@ -335,7 +396,7 @@ input[type="file"]{
                                 name="stock"
                                 class="form-control @error('stock') is-invalid @enderror"
                                 value="{{ old('stock', $product->stock) }}"
-                                placeholder="Masukkan jumlah stok"
+                                placeholder="Masukkan stok produk"
                                 required
                             >
 
@@ -363,10 +424,6 @@ input[type="file"]{
                                 class="form-select @error('user_id') is-invalid @enderror"
                                 required
                             >
-
-                                <option value="">
-                                    Pilih seller
-                                </option>
 
                                 @foreach($sellers as $seller)
 
@@ -422,21 +479,27 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
-                                Gambar Saat Ini
+                                Gambar Produk
                             </label>
 
-                            <div class="preview-wrapper mb-4">
+                            <div class="image-preview-wrapper mb-3">
 
-                                <img
-                                    src="{{ asset('storage/'.$product->image) }}"
-                                    class="product-preview"
-                                >
+                                @if($product->image)
+
+                                    <img
+                                        src="{{ asset('storage/'.$product->image) }}"
+                                        class="preview-image"
+                                    >
+
+                                @else
+
+                                    <div class="preview-placeholder">
+                                        <i class="bi bi-image"></i>
+                                    </div>
+
+                                @endif
 
                             </div>
-
-                            <label class="form-label">
-                                Ganti Gambar (Opsional)
-                            </label>
 
                             <input
                                 type="file"
@@ -464,8 +527,8 @@ input[type="file"]{
                                 type="submit"
                                 class="btn-modern-primary"
                             >
-                                <i class="bi bi-check-circle"></i>
-                                Simpan Perubahan
+                                <i class="bi bi-check-circle-fill"></i>
+                                Update Produk
                             </button>
 
                             <a

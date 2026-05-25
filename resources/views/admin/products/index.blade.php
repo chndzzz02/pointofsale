@@ -6,73 +6,106 @@
 
 <style>
 
-body{
-    background:#f4f7fb;
+:root{
+    --primary:#2563eb;
+    --primary-soft:#dbeafe;
+    --dark:#0f172a;
+    --text:#1e293b;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --bg:#f8fafc;
+    --success:#16a34a;
+    --success-soft:#dcfce7;
+    --danger:#dc2626;
+    --danger-soft:#fee2e2;
+    --warning:#f59e0b;
+    --warning-soft:#fef3c7;
 }
 
-/* HEADER */
+body{
+    background:var(--bg);
+}
+
+/* =======================
+   PAGE WRAPPER
+======================= */
+
+.products-page{
+    animation:fadeUp .5s ease;
+}
+
+/* =======================
+   HEADER
+======================= */
 
 .page-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:30px;
     flex-wrap:wrap;
-    gap:15px;
+    gap:20px;
+    margin-bottom:28px;
 }
 
 .page-title{
-    font-size:32px;
+    font-size:30px;
     font-weight:800;
-    color:#111827;
-    margin:0;
+    color:var(--dark);
+    margin-bottom:6px;
     letter-spacing:-1px;
 }
 
 .page-subtitle{
-    color:#6b7280;
-    margin-top:6px;
+    color:var(--muted);
     font-size:14px;
+    margin:0;
 }
 
-/* BUTTON */
+/* =======================
+   BUTTON
+======================= */
 
 .modern-btn{
     border:none;
-    padding:13px 24px;
-    border-radius:999px;
-    font-weight:600;
-    background:linear-gradient(135deg,#111827,#1f2937);
+    height:48px;
+    padding:0 22px;
+    border-radius:16px;
+    background:linear-gradient(135deg,var(--primary),#1d4ed8);
     color:white !important;
-    transition:.25s ease;
-    box-shadow:
-        0 10px 25px rgba(17,24,39,.15);
+    font-weight:700;
+    font-size:14px;
     text-decoration:none !important;
     display:inline-flex;
     align-items:center;
     gap:10px;
+    transition:.3s ease;
+    box-shadow:
+        0 10px 25px rgba(37,99,235,.18);
 }
 
 .modern-btn:hover{
-    transform:translateY(-1px);
+    transform:translateY(-2px);
     color:white !important;
-    text-decoration:none !important;
     box-shadow:
-        0 14px 30px rgba(17,24,39,.22);
+        0 14px 30px rgba(37,99,235,.25);
 }
 
-/* CARD */
+/* =======================
+   CARD
+======================= */
 
 .product-wrapper{
     background:white;
-    border-radius:28px;
+    border-radius:26px;
+    border:1px solid var(--border);
     overflow:hidden;
-    border:1px solid #eef2f7;
     box-shadow:
-        0 10px 40px rgba(15,23,42,.05);
+        0 10px 35px rgba(15,23,42,.05);
 }
 
-/* TABLE */
+/* =======================
+   TABLE
+======================= */
 
 .table{
     margin-bottom:0;
@@ -84,198 +117,287 @@ body{
 
 .table thead th{
     border:none;
-    padding:20px;
-    font-size:13px;
+    padding:18px 20px;
+    color:var(--muted);
+    font-size:12px;
     font-weight:700;
-    color:#6b7280;
     text-transform:uppercase;
     letter-spacing:.5px;
+    white-space:nowrap;
 }
 
 .table tbody td{
-    padding:20px;
+    padding:18px 20px;
     vertical-align:middle;
     border-color:#f1f5f9;
 }
 
 .table tbody tr{
-    transition:.2s ease;
-}
-
-.table tbody tr:hover{
-    background:#fafafa;
-}
-
-/* IMAGE */
-
-.product-image{
-    width:70px;
-    height:70px;
-    object-fit:cover;
-    border-radius:20px;
-    border:2px solid #eef2f7;
     transition:.25s ease;
 }
 
-.table tbody tr:hover .product-image{
-    transform:scale(1.03);
+.table tbody tr:hover{
+    background:#fafcff;
 }
 
-/* PRODUCT */
+/* =======================
+   PRODUCT
+======================= */
+
+.product-box{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.product-image{
+    width:64px;
+    height:64px;
+    border-radius:18px;
+    object-fit:cover;
+    border:2px solid #eef2ff;
+    background:white;
+    transition:.3s;
+}
+
+.table tbody tr:hover .product-image{
+    transform:scale(1.04);
+}
 
 .product-name{
-    font-weight:700;
-    color:#111827;
-    margin-bottom:4px;
     font-size:15px;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:3px;
 }
 
 .product-category{
     font-size:13px;
-    color:#6b7280;
+    color:var(--muted);
 }
 
-/* BADGES */
+/* =======================
+   BADGE
+======================= */
 
 .price-badge{
-    background:#f3f4f6;
-    color:#111827;
-    padding:10px 15px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:9px 14px;
     border-radius:999px;
-    font-weight:700;
+    background:var(--primary-soft);
+    color:var(--primary);
     font-size:13px;
-    display:inline-block;
+    font-weight:700;
 }
 
 .stock-badge{
-    background:#ecfdf5;
-    color:#16a34a;
-    padding:10px 15px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:9px 14px;
     border-radius:999px;
-    font-weight:700;
+    background:var(--success-soft);
+    color:var(--success);
     font-size:13px;
-    display:inline-block;
+    font-weight:700;
 }
 
-/* SELLER */
-
-.seller-name{
+.seller-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 14px;
+    border-radius:14px;
+    background:#f8fafc;
+    color:var(--text);
     font-weight:600;
-    color:#374151;
+    font-size:13px;
 }
 
-/* ACTION */
+/* =======================
+   ACTION
+======================= */
 
 .action-group{
     display:flex;
     justify-content:center;
     gap:10px;
+    flex-wrap:wrap;
 }
 
 .btn-edit{
     border:none;
-    background:#facc15;
-    color:#111827;
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:600;
-    transition:.2s;
+    height:42px;
+    padding:0 16px;
+    border-radius:14px;
+    background:var(--warning-soft);
+    color:#92400e;
+    font-size:13px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
     text-decoration:none;
+    transition:.25s;
 }
 
 .btn-edit:hover{
-    background:#eab308;
+    background:var(--warning);
+    color:white;
     transform:translateY(-1px);
-    color:#111827;
 }
 
 .btn-delete{
     border:none;
-    background:#ef4444;
-    color:white;
-    padding:10px 18px;
-    border-radius:999px;
-    font-weight:600;
-    transition:.2s;
+    height:42px;
+    padding:0 16px;
+    border-radius:14px;
+    background:var(--danger-soft);
+    color:var(--danger);
+    font-size:13px;
+    font-weight:700;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:.25s;
 }
 
 .btn-delete:hover{
-    background:#dc2626;
+    background:var(--danger);
+    color:white;
     transform:translateY(-1px);
 }
 
-/* EMPTY */
+/* =======================
+   ALERT
+======================= */
+
+.alert-modern{
+    border:none;
+    border-radius:18px;
+    background:#ecfdf5;
+    color:#166534;
+    padding:16px 20px;
+    font-weight:600;
+    margin-bottom:24px;
+}
+
+/* =======================
+   EMPTY
+======================= */
 
 .empty-state{
     padding:80px 20px;
     text-align:center;
 }
 
-.empty-state i{
-    font-size:70px;
-    color:#cbd5e1;
-    margin-bottom:15px;
+.empty-icon{
+    width:90px;
+    height:90px;
+    border-radius:28px;
+    background:#f1f5f9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:auto auto 20px;
+    font-size:38px;
+    color:#94a3b8;
 }
 
-.empty-state h5{
-    font-weight:700;
-    color:#111827;
+.empty-title{
+    font-size:22px;
+    font-weight:800;
+    color:var(--dark);
+    margin-bottom:8px;
 }
 
-.empty-state p{
-    color:#6b7280;
+.empty-text{
+    color:var(--muted);
+    font-size:14px;
 }
 
-/* PAGINATION */
+/* =======================
+   PAGINATION
+======================= */
 
 .pagination{
     justify-content:center;
-    margin-top:30px;
+    gap:6px;
 }
 
 .page-item .page-link{
     border:none;
-    margin:0 5px;
+    width:42px;
+    height:42px;
     border-radius:14px !important;
-    color:#111827;
-    font-weight:600;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text);
+    font-weight:700;
     background:white;
     box-shadow:none;
 }
 
 .page-item .page-link:hover{
-    background:#f3f4f6;
-    color:#111827;
+    background:#eff6ff;
+    color:var(--primary);
 }
 
 .page-item.active .page-link{
-    background:#111827;
+    background:var(--primary);
     color:white;
+}
+
+/* =======================
+   ANIMATION
+======================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:24px;
+    }
+
+    .modern-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .table{
+        min-width:900px;
+    }
+
 }
 
 </style>
 
-<div class="container-fluid px-4 py-4">
-
-    {{-- HEADER --}}
-    <div class="page-header">
-
-        <div>
-
-            <h1 class="page-title">
-                Semua Produk
-            </h1>
-
-            <div class="page-subtitle">
-                Kelola seluruh produk seller dengan tampilan modern dan elegan
-            </div>
-
-        </div>
+<div class="container-fluid px-3 px-md-4 py-4 products-page">
 
         <a href="{{ route('admin.products.create') }}"
            class="modern-btn">
+
             <i class="bi bi-plus-lg"></i>
+
             Tambah Produk
+
         </a>
 
     </div>
@@ -283,13 +405,17 @@ body{
     {{-- ALERT --}}
     @if(session('success'))
 
-        <div class="alert alert-success border-0 rounded-4 shadow-sm">
+        <div class="alert-modern">
+
+            <i class="bi bi-check-circle-fill me-2"></i>
+
             {{ session('success') }}
+
         </div>
 
     @endif
 
-    {{-- TABLE --}}
+    {{-- TABLE CARD --}}
     <div class="product-wrapper">
 
         <div class="table-responsive">
@@ -299,12 +425,14 @@ body{
                 <thead>
 
                     <tr>
+
                         <th>ID</th>
                         <th>Produk</th>
                         <th>Harga</th>
                         <th>Stok</th>
                         <th>Seller</th>
                         <th class="text-center">Aksi</th>
+
                     </tr>
 
                 </thead>
@@ -316,12 +444,16 @@ body{
                     <tr>
 
                         <td>
-                            <strong>#{{ $product->id }}</strong>
+
+                            <strong class="text-dark">
+                                #{{ $product->id }}
+                            </strong>
+
                         </td>
 
                         <td>
 
-                            <div class="d-flex align-items-center gap-3">
+                            <div class="product-box">
 
                                 <img
                                     src="{{ $product->image
@@ -349,7 +481,9 @@ body{
                         <td>
 
                             <span class="price-badge">
+
                                 Rp {{ number_format($product->price ?? 0,0,',','.') }}
+
                             </span>
 
                         </td>
@@ -357,15 +491,21 @@ body{
                         <td>
 
                             <span class="stock-badge">
+
                                 {{ $product->stock ?? 0 }} Stok
+
                             </span>
 
                         </td>
 
                         <td>
 
-                            <div class="seller-name">
+                            <div class="seller-badge">
+
+                                <i class="bi bi-person-circle"></i>
+
                                 {{ $product->user->name ?? 'Tidak diketahui' }}
+
                             </div>
 
                         </td>
@@ -376,14 +516,18 @@ body{
 
                                 <a href="{{ route('admin.products.edit', $product) }}"
                                    class="btn-edit">
+
                                     <i class="bi bi-pencil-square"></i>
+
                                     Edit
+
                                 </a>
 
                                 <form
                                     action="{{ route('admin.products.destroy', $product) }}"
                                     method="POST"
                                 >
+
                                     @csrf
                                     @method('DELETE')
 
@@ -392,8 +536,11 @@ body{
                                         class="btn-delete"
                                         onclick="return confirm('Yakin ingin menghapus produk ini?')"
                                     >
+
                                         <i class="bi bi-trash"></i>
+
                                         Hapus
+
                                     </button>
 
                                 </form>
@@ -412,15 +559,23 @@ body{
 
                             <div class="empty-state">
 
-                                <i class="bi bi-bag-x"></i>
+                                <div class="empty-icon">
 
-                                <h5>
+                                    <i class="bi bi-bag-x"></i>
+
+                                </div>
+
+                                <div class="empty-title">
+
                                     Belum Ada Produk
-                                </h5>
 
-                                <p>
-                                    Produk seller akan muncul di sini
-                                </p>
+                                </div>
+
+                                <div class="empty-text">
+
+                                    Produk seller akan muncul di halaman ini
+
+                                </div>
 
                             </div>
 
@@ -440,7 +595,9 @@ body{
 
     {{-- PAGINATION --}}
     <div class="mt-4">
+
         {{ $products->links() }}
+
     </div>
 
 </div>

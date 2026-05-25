@@ -6,165 +6,286 @@
 
 <style>
 
-body{
-    background:#f4f7fb;
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --primary-soft:#dbeafe;
+
+    --success:#16a34a;
+    --success-soft:#dcfce7;
+
+    --dark:#0f172a;
+    --text:#1e293b;
+    --muted:#64748b;
+
+    --border:#e2e8f0;
+    --bg:#f8fafc;
+
+    --danger:#dc2626;
 }
 
-/* WRAPPER */
+/* =======================
+   GLOBAL
+======================= */
+
+body{
+    background:var(--bg);
+}
+
+/* =======================
+   WRAPPER
+======================= */
 
 .create-product-wrapper{
-    padding:10px 5px 40px;
+    padding:8px 4px 40px;
+    animation:fadeUp .45s ease;
 }
 
-/* HEADER */
+/* =======================
+   HEADER
+======================= */
 
 .page-header{
-    margin-bottom:30px;
+    margin-bottom:24px;
 }
 
 .page-title{
-    font-size:34px;
+    font-size:30px;
     font-weight:800;
-    color:#111827;
+    color:var(--dark);
     letter-spacing:-1px;
     margin-bottom:6px;
 }
 
 .page-subtitle{
-    color:#6b7280;
+    color:var(--muted);
     font-size:14px;
+    margin:0;
 }
 
-/* CARD */
+/* =======================
+   CARD
+======================= */
 
 .modern-card{
     background:white;
-    border:none;
-    border-radius:32px;
+    border:1px solid var(--border);
+    border-radius:28px;
     overflow:hidden;
     box-shadow:
-        0 10px 40px rgba(15,23,42,.05);
+        0 10px 35px rgba(15,23,42,.05);
 }
 
-/* BODY */
+/* =======================
+   TOP BAR
+======================= */
+
+.card-topbar{
+    padding:22px 28px;
+    border-bottom:1px solid #f1f5f9;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+.topbar-title{
+    font-size:18px;
+    font-weight:700;
+    color:var(--dark);
+    margin-bottom:4px;
+}
+
+.topbar-subtitle{
+    font-size:13px;
+    color:var(--muted);
+}
+
+/* =======================
+   BODY
+======================= */
 
 .modern-card-body{
-    padding:40px;
+    padding:32px;
 }
 
-/* LABEL */
+/* =======================
+   FORM GROUP
+======================= */
+
+.form-section{
+    margin-bottom:4px;
+}
 
 .form-label{
-    font-size:14px;
+    font-size:13px;
     font-weight:700;
-    color:#374151;
+    color:var(--text);
     margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-/* INPUT */
+/* =======================
+   INPUT
+======================= */
 
 .form-control,
 .form-select{
-    border:none;
+    border:1px solid #e5e7eb;
     background:#f8fafc;
-    border-radius:18px;
-    padding:15px 18px;
-    min-height:56px;
+    border-radius:16px;
+    padding:14px 16px;
+    min-height:54px;
     transition:.25s ease;
     box-shadow:none !important;
     font-size:14px;
-    color:#111827;
+    color:var(--dark);
+}
+
+.form-control::placeholder{
+    color:#94a3b8;
 }
 
 textarea.form-control{
     min-height:140px;
     resize:none;
+    padding-top:16px;
 }
 
 .form-control:focus,
 .form-select:focus{
     background:white;
-    border:none;
+    border-color:var(--primary);
     box-shadow:
-        0 0 0 4px rgba(17,24,39,.06) !important;
+        0 0 0 4px rgba(37,99,235,.10) !important;
 }
 
-/* FILE INPUT */
+/* =======================
+   FILE INPUT
+======================= */
 
 input[type="file"]{
-    padding:14px;
+    padding:12px;
+    background:white;
 }
 
-/* INVALID */
+/* =======================
+   INVALID
+======================= */
 
 .invalid-feedback{
+    display:block;
     margin-top:8px;
     font-size:13px;
+    color:var(--danger);
 }
 
-/* BUTTON PRIMARY */
+/* =======================
+   INFO BOX
+======================= */
+
+.info-box{
+    background:linear-gradient(
+        135deg,
+        rgba(37,99,235,.08),
+        rgba(37,99,235,.03)
+    );
+    border:1px solid rgba(37,99,235,.10);
+    border-radius:18px;
+    padding:18px;
+    margin-bottom:26px;
+}
+
+.info-box-title{
+    font-size:14px;
+    font-weight:700;
+    color:var(--primary-dark);
+    margin-bottom:6px;
+}
+
+.info-box-text{
+    font-size:13px;
+    color:#475569;
+    line-height:1.6;
+}
+
+/* =======================
+   BUTTON
+======================= */
 
 .btn-modern-primary{
-    background:linear-gradient(135deg,#111827,#1f2937);
-    color:white;
+    height:50px;
+    padding:0 24px;
     border:none;
-    padding:14px 30px;
-    border-radius:999px;
-    font-weight:600;
-    transition:.25s ease;
-    text-decoration:none;
+    border-radius:16px;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-dark)
+    );
+    color:white;
+    font-size:14px;
+    font-weight:700;
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
+    transition:.3s ease;
     box-shadow:
-        0 10px 25px rgba(17,24,39,.15);
+        0 10px 25px rgba(37,99,235,.18);
 }
 
 .btn-modern-primary:hover{
-    transform:translateY(-1px);
+    transform:translateY(-2px);
     color:white;
     box-shadow:
-        0 14px 30px rgba(17,24,39,.22);
+        0 16px 35px rgba(37,99,235,.22);
 }
 
-/* BUTTON SECONDARY */
-
 .btn-modern-secondary{
-    background:#f3f4f6;
-    color:#111827;
+    height:50px;
+    padding:0 22px;
     border:none;
-    padding:14px 30px;
-    border-radius:999px;
-    font-weight:600;
-    transition:.25s ease;
-    text-decoration:none;
+    border-radius:16px;
+    background:#f1f5f9;
+    color:var(--text);
+    font-size:14px;
+    font-weight:700;
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:10px;
+    transition:.25s;
+    text-decoration:none;
 }
 
 .btn-modern-secondary:hover{
-    background:#e5e7eb;
-    color:#111827;
+    background:#e2e8f0;
+    color:var(--text);
     transform:translateY(-1px);
 }
 
-/* SECTION */
+/* =======================
+   FOOTER ACTION
+======================= */
 
-.form-section{
-    margin-bottom:10px;
+.form-footer{
+    border-top:1px solid #f1f5f9;
+    margin-top:28px;
+    padding-top:28px;
 }
 
-/* ANIMATION */
-
-.fade-up{
-    animation:fadeUp .5s ease;
-}
+/* =======================
+   ANIMATION
+======================= */
 
 @keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(18px);
     }
     to{
         opacity:1;
@@ -172,27 +293,86 @@ input[type="file"]{
     }
 }
 
+/* =======================
+   MOBILE
+======================= */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:24px;
+    }
+
+    .modern-card-body{
+        padding:22px;
+    }
+
+    .card-topbar{
+        padding:18px 20px;
+    }
+
+    .btn-modern-primary,
+    .btn-modern-secondary{
+        width:100%;
+    }
+
+}
+
 </style>
 
-<div class="container-fluid px-4 create-product-wrapper fade-up">
-
-    {{-- HEADER --}}
-    <div class="page-header">
-
-        <h1 class="page-title">
-            Tambah Produk
-        </h1>
-
-        <div class="page-subtitle">
-            Tambahkan produk baru untuk seller dengan tampilan modern dan elegan
-        </div>
-
-    </div>
+<div class="container-fluid px-3 px-md-4 create-product-wrapper">
 
     {{-- CARD --}}
     <div class="modern-card">
 
+        {{-- TOPBAR --}}
+        <div class="card-topbar">
+
+            <div>
+
+                <div class="topbar-title">
+                    Form Produk
+                </div>
+
+                <div class="topbar-subtitle">
+                    Lengkapi data produk di bawah ini
+                </div>
+
+            </div>
+
+            <div class="d-none d-md-flex align-items-center gap-2 text-muted small">
+
+                <i class="bi bi-shield-check"></i>
+
+                Data tersimpan aman
+
+            </div>
+
+        </div>
+
+        {{-- BODY --}}
         <div class="modern-card-body">
+
+            {{-- INFO --}}
+            <div class="info-box">
+
+                <div class="info-box-title">
+
+                    <i class="bi bi-lightbulb"></i>
+
+                    Tips Produk
+
+                </div>
+
+                <div class="info-box-text">
+
+                    Gunakan nama produk yang jelas, deskripsi menarik,
+                    dan upload gambar berkualitas agar produk lebih menarik
+                    bagi customer.
+
+                </div>
+
+            </div>
 
             <form
                 action="{{ route('admin.products.store') }}"
@@ -204,13 +384,17 @@ input[type="file"]{
 
                 <div class="row g-4">
 
-                    {{-- NAMA PRODUK --}}
+                    {{-- NAMA --}}
                     <div class="col-md-6">
 
                         <div class="form-section">
 
                             <label class="form-label">
+
+                                <i class="bi bi-box-seam"></i>
+
                                 Nama Produk
+
                             </label>
 
                             <input
@@ -218,7 +402,7 @@ input[type="file"]{
                                 name="name"
                                 class="form-control @error('name') is-invalid @enderror"
                                 value="{{ old('name') }}"
-                                placeholder="Masukkan nama produk"
+                                placeholder="Contoh: Keripik Pisang Premium"
                                 required
                             >
 
@@ -238,7 +422,11 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
+
+                                <i class="bi bi-grid"></i>
+
                                 Kategori
+
                             </label>
 
                             <select
@@ -280,7 +468,11 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
+
+                                <i class="bi bi-cash-stack"></i>
+
                                 Harga Produk
+
                             </label>
 
                             <input
@@ -288,7 +480,7 @@ input[type="file"]{
                                 name="price"
                                 class="form-control @error('price') is-invalid @enderror"
                                 value="{{ old('price') }}"
-                                placeholder="Masukkan harga produk"
+                                placeholder="Masukkan harga"
                                 required
                             >
 
@@ -308,7 +500,11 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
+
+                                <i class="bi bi-boxes"></i>
+
                                 Stok Produk
+
                             </label>
 
                             <input
@@ -316,7 +512,7 @@ input[type="file"]{
                                 name="stock"
                                 class="form-control @error('stock') is-invalid @enderror"
                                 value="{{ old('stock') }}"
-                                placeholder="Masukkan jumlah stok"
+                                placeholder="Jumlah stok tersedia"
                                 required
                             >
 
@@ -336,7 +532,11 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
-                                Pilih Seller
+
+                                <i class="bi bi-person-badge"></i>
+
+                                Seller
+
                             </label>
 
                             <select
@@ -378,13 +578,17 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
+
+                                <i class="bi bi-card-text"></i>
+
                                 Deskripsi Produk
+
                             </label>
 
                             <textarea
                                 name="description"
                                 class="form-control @error('description') is-invalid @enderror"
-                                placeholder="Masukkan deskripsi produk"
+                                placeholder="Masukkan deskripsi produk..."
                             >{{ old('description') }}</textarea>
 
                             @error('description')
@@ -403,7 +607,11 @@ input[type="file"]{
                         <div class="form-section">
 
                             <label class="form-label">
-                                Upload Gambar Produk
+
+                                <i class="bi bi-image"></i>
+
+                                Gambar Produk
+
                             </label>
 
                             <input
@@ -424,28 +632,34 @@ input[type="file"]{
 
                     </div>
 
-                    {{-- BUTTON --}}
-                    <div class="col-12 mt-3">
+                </div>
 
-                        <div class="d-flex gap-3 flex-wrap">
+                {{-- FOOTER --}}
+                <div class="form-footer">
 
-                            <button
-                                type="submit"
-                                class="btn-modern-primary"
-                            >
-                                <i class="bi bi-check-circle"></i>
-                                Simpan Produk
-                            </button>
+                    <div class="d-flex gap-3 flex-wrap">
 
-                            <a
-                                href="{{ route('admin.products.index') }}"
-                                class="btn-modern-secondary"
-                            >
-                                <i class="bi bi-arrow-left"></i>
-                                Kembali
-                            </a>
+                        <button
+                            type="submit"
+                            class="btn-modern-primary"
+                        >
 
-                        </div>
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Simpan Produk
+
+                        </button>
+
+                        <a
+                            href="{{ route('admin.products.index') }}"
+                            class="btn-modern-secondary"
+                        >
+
+                            <i class="bi bi-arrow-left"></i>
+
+                            Kembali
+
+                        </a>
 
                     </div>
 

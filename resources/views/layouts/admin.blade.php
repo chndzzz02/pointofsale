@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - @yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
+    <title>
+        Admin Panel - @yield('title')
+    </title>
+
+    {{-- Bootstrap --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    {{-- Bootstrap Icons --}}
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
+    {{-- Google Font --}}
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
@@ -17,264 +27,334 @@
 
 <style>
 
+:root{
+
+    --primary:#2563eb;
+    --primary-soft:#eff6ff;
+
+    --bg:#f5f7fb;
+    --white:#ffffff;
+
+    --text:#0f172a;
+    --text-light:#64748b;
+
+    --border:#e2e8f0;
+
+    --shadow:
+        0 10px 30px rgba(15,23,42,.05);
+
+    --shadow-hover:
+        0 16px 40px rgba(15,23,42,.08);
+}
+
+/* =========================
+    GLOBAL
+========================= */
+
 *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
     font-family:'Inter',sans-serif;
 }
 
 body{
-    background:
-        radial-gradient(circle at top left,#f5f7fa 0%,#eef2f7 45%,#f8fafc 100%);
-    margin:0;
-    padding:0;
-    color:#111827;
-    overflow-x:hidden;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.premium-sidebar{
-    width:290px;
-    min-height:100vh;
-    position:fixed;
-    left:0;
-    top:0;
-    z-index:1000;
-    overflow:hidden;
 
     background:
         linear-gradient(
             180deg,
-            #0f172a 0%,
-            #111827 35%,
-            #1e293b 100%
+            #f8fafc 0%,
+            #eef2f7 100%
         );
 
-    border-right:1px solid rgba(255,255,255,.06);
+    color:var(--text);
 
-    box-shadow:
-        20px 0 60px rgba(15,23,42,.18);
-
-    transition:.4s;
-}
-
-.premium-sidebar::before{
-    content:'';
-    position:absolute;
-    width:260px;
-    height:260px;
-    border-radius:50%;
-    background:rgba(255,255,255,.05);
-    top:-100px;
-    right:-100px;
-}
-
-.premium-sidebar::after{
-    content:'';
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,.03);
-    bottom:-70px;
-    left:-70px;
+    overflow-x:hidden;
 }
 
 /* =========================
-   SIDEBAR HEADER
+    SIDEBAR
 ========================= */
 
-.sidebar-header{
-    position:relative;
-    z-index:2;
+.sidebar{
 
-    padding:32px 28px 24px;
+    width:285px;
 
-    border-bottom:
-        1px solid rgba(255,255,255,.06);
-}
+    min-height:100vh;
 
-.sidebar-header h4{
-    color:white;
-    font-weight:800;
-    font-size:28px;
-    letter-spacing:-1px;
-    margin-bottom:8px;
-}
+    position:fixed;
 
-.sidebar-header p{
-    color:rgba(255,255,255,.6);
-    font-size:13px;
-    margin:0;
-    line-height:1.6;
+    top:0;
+    left:0;
+
+    background:rgba(255,255,255,.95);
+
+    backdrop-filter:blur(18px);
+
+    border-right:1px solid rgba(226,232,240,.8);
+
+    padding:24px 18px;
+
+    z-index:1000;
+
+    display:flex;
+    flex-direction:column;
+
+    transition:.35s ease;
 }
 
 /* =========================
-   NAVIGATION
+    LOGO
 ========================= */
 
-.premium-sidebar .nav{
-    padding:20px 16px;
-    position:relative;
-    z-index:2;
-}
-
-.premium-sidebar .nav-link{
-    position:relative;
+.logo-box{
 
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:16px;
 
-    padding:16px 18px;
-    margin-bottom:10px;
+    margin-bottom:42px;
 
-    border-radius:18px;
-
-    color:rgba(255,255,255,.72) !important;
-
-    font-size:15px;
-    font-weight:600;
-
-    transition:.35s;
+    padding:0 8px;
 }
 
-.premium-sidebar .nav-link i{
-    width:22px;
-    font-size:18px;
-    transition:.35s;
-}
+.logo-icon{
 
-.premium-sidebar .nav-link:hover{
+    width:62px;
+    height:62px;
 
-    background:
-        rgba(255,255,255,.08);
-
-    color:white !important;
-
-    transform:translateX(6px);
-}
-
-.premium-sidebar .nav-link:hover i{
-    transform:scale(1.1);
-}
-
-.premium-sidebar .nav-link.active{
+    border-radius:20px;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.16),
-            rgba(255,255,255,.08)
+            #2563eb,
+            #3b82f6
         );
 
-    color:white !important;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    font-size:26px;
 
     box-shadow:
-        inset 0 0 0 1px rgba(255,255,255,.08),
-        0 10px 25px rgba(0,0,0,.12);
+        0 12px 30px rgba(37,99,235,.22);
 }
 
-.premium-sidebar .nav-link.active::before{
-    content:'';
-    position:absolute;
-    left:0;
-    top:50%;
-    transform:translateY(-50%);
-    width:4px;
-    height:60%;
-    border-radius:20px;
-    background:white;
+.logo-text h3{
+
+    margin:0;
+
+    font-size:20px;
+
+    font-weight:800;
+
+    color:#0f172a;
+}
+
+.logo-text p{
+
+    margin:4px 0 0;
+
+    font-size:13px;
+
+    color:#64748b;
 }
 
 /* =========================
-   LOGOUT
+    MENU
 ========================= */
 
-.sidebar-footer{
-    position:absolute;
-    bottom:0;
-    width:100%;
-    padding:24px;
-    z-index:2;
+.sidebar-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    flex:1;
+}
+
+.sidebar-link{
+
+    height:58px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:0 18px;
+
+    text-decoration:none;
+
+    color:#64748b;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.28s ease;
+
+    position:relative;
+}
+
+.sidebar-link i{
+
+    font-size:20px;
+
+    transition:.25s;
+}
+
+.sidebar-link:hover{
+
+    background:#f8fafc;
+
+    color:#0f172a;
+
+    transform:translateX(3px);
+}
+
+.sidebar-link.active{
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    color:white;
+
+    box-shadow:
+        0 12px 28px rgba(37,99,235,.20);
+}
+
+.sidebar-link.active i{
+
+    transform:scale(1.08);
+}
+
+/* =========================
+    LOGOUT
+========================= */
+
+.logout-wrapper{
+
+    margin-top:auto;
+
+    padding-top:20px;
 }
 
 .logout-btn{
+
     width:100%;
-    height:54px;
+
+    height:58px;
 
     border:none;
 
     border-radius:18px;
 
-    background:
-        rgba(255,255,255,.08);
+    background:#f8fafc;
 
-    color:white;
+    color:#0f172a;
 
     font-weight:700;
 
-    transition:.35s;
-
-    backdrop-filter:blur(10px);
+    transition:.28s ease;
 }
 
 .logout-btn:hover{
 
-    background:white;
+    background:#ef4444;
 
-    color:#111827;
+    color:white;
 
-    transform:translateY(-3px);
+    transform:translateY(-2px);
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.2);
+        0 12px 24px rgba(239,68,68,.18);
 }
 
 /* =========================
-   MAIN CONTENT
+    MAIN CONTENT
 ========================= */
 
 .main-content{
 
-    margin-left:290px;
-
-    padding:28px;
+    margin-left:285px;
 
     min-height:100vh;
 
-    transition:.4s;
+    padding:30px;
 }
 
 /* =========================
-   TOPBAR
+    TOPBAR
 ========================= */
 
-.topbar-modern{
+.topbar{
 
-    background:
-        rgba(255,255,255,.7);
+    display:flex;
 
-    backdrop-filter:blur(14px);
+    justify-content:space-between;
 
-    border:
-        1px solid rgba(255,255,255,.4);
+    align-items:center;
 
-    border-radius:24px;
+    margin-bottom:30px;
 
-    padding:16px 22px;
+    gap:20px;
 
-    margin-bottom:28px;
-
-    box-shadow:
-        0 10px 35px rgba(15,23,42,.05);
+    flex-wrap:wrap;
 }
 
-.menu-btn{
+.topbar-left h1{
 
-    width:48px;
-    height:48px;
+    font-size:38px;
+
+    font-weight:800;
+
+    letter-spacing:-1px;
+
+    margin-bottom:6px;
+
+    color:#0f172a;
+}
+
+.topbar-left p{
+
+    margin:0;
+
+    font-size:15px;
+
+    color:#64748b;
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+}
+
+/* =========================
+    MOBILE BUTTON
+========================= */
+
+.mobile-toggle{
+
+    width:50px;
+    height:50px;
 
     border:none;
 
@@ -282,135 +362,230 @@ body{
 
     background:white;
 
-    transition:.3s;
+    box-shadow:var(--shadow);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    transition:.25s ease;
 }
 
-.menu-btn:hover{
+.mobile-toggle:hover{
+
     transform:translateY(-2px);
 }
 
-.user-badge{
+/* =========================
+    USER PROFILE
+========================= */
 
-    height:48px;
-
-    padding:0 18px;
-
-    border-radius:18px;
+.user-profile{
 
     background:white;
 
+    border:1px solid #edf2f7;
+
+    border-radius:22px;
+
+    padding:10px 18px;
+
     display:flex;
+
     align-items:center;
-    gap:10px;
 
-    font-weight:600;
+    gap:14px;
 
-    color:#111827;
+    box-shadow:var(--shadow);
+
+    transition:.28s ease;
+}
+
+.user-profile:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:var(--shadow-hover);
+}
+
+.user-avatar{
+
+    width:48px;
+    height:48px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:18px;
 
     box-shadow:
-        0 5px 18px rgba(15,23,42,.05);
+        0 10px 20px rgba(37,99,235,.18);
+}
+
+.user-info h6{
+
+    margin:0;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    color:#0f172a;
+}
+
+.user-info p{
+
+    margin:2px 0 0;
+
+    font-size:12px;
+
+    color:#64748b;
 }
 
 /* =========================
-   ALERT
+    CONTENT WRAPPER
+========================= */
+
+.content-wrapper{
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.7);
+
+    border-radius:32px;
+
+    padding:28px;
+
+    box-shadow:
+        0 12px 40px rgba(15,23,42,.05);
+}
+
+/* =========================
+    ALERT
 ========================= */
 
 .alert{
+
     border:none;
-    border-radius:22px;
-    padding:18px 22px;
-    font-weight:500;
-    box-shadow:
-        0 10px 25px rgba(15,23,42,.04);
+
+    border-radius:18px;
+
+    padding:16px 20px;
+
+    font-weight:600;
+
+    box-shadow:var(--shadow);
 }
 
 .alert-success{
+
     background:#ecfdf5;
+
     color:#047857;
 }
 
 .alert-danger{
+
     background:#fef2f2;
+
     color:#b91c1c;
 }
 
 /* =========================
-   CARD MODERN
-========================= */
-
-.stat-card-premium,
-.glass-card-premium{
-
-    background:
-        rgba(255,255,255,.78);
-
-    backdrop-filter:blur(16px);
-
-    border:
-        1px solid rgba(255,255,255,.5);
-
-    border-radius:30px;
-
-    box-shadow:
-        0 15px 45px rgba(15,23,42,.05);
-
-    transition:.35s;
-}
-
-.stat-card-premium:hover,
-.glass-card-premium:hover{
-
-    transform:translateY(-6px);
-
-    box-shadow:
-        0 25px 50px rgba(15,23,42,.08);
-}
-
-/* =========================
-   BADGE
-========================= */
-
-.badge-status{
-    padding:10px 16px;
-    border-radius:999px;
-    font-size:12px;
-    font-weight:700;
-}
-
-/* =========================
-   SCROLLBAR
+    SCROLLBAR
 ========================= */
 
 ::-webkit-scrollbar{
-    width:8px;
+
+    width:7px;
 }
 
 ::-webkit-scrollbar-thumb{
+
     background:#cbd5e1;
-    border-radius:20px;
+
+    border-radius:999px;
 }
 
 /* =========================
-   MOBILE
+    ANIMATION
+========================= */
+
+.fade-up{
+
+    animation:fadeUp .45s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(18px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+    MOBILE
 ========================= */
 
 @media(max-width:992px){
 
-    .premium-sidebar{
+    .sidebar{
+
         transform:translateX(-100%);
     }
 
-    .premium-sidebar.mobile-open{
+    .sidebar.show{
+
         transform:translateX(0);
     }
 
     .main-content{
+
         margin-left:0;
-        padding:18px;
+
+        padding:20px;
     }
 
-    .sidebar-header h4{
-        font-size:24px;
+    .mobile-toggle{
+
+        display:flex;
+    }
+
+    .topbar-left h1{
+
+        font-size:30px;
+    }
+
+    .content-wrapper{
+
+        padding:22px;
     }
 
 }
@@ -423,162 +598,208 @@ body{
 
 <body>
 
-    <!-- SIDEBAR -->
-    <div class="premium-sidebar" id="sidebar">
+{{-- SIDEBAR --}}
+<div class="sidebar"
+     id="sidebar">
 
-        <div class="sidebar-header">
+    {{-- LOGO --}}
+    <div class="logo-box">
 
-            <h4>
-                🛍️ UMKM Admin
-            </h4>
+        <div class="logo-icon">
+
+            <i class="bi bi-shop"></i>
+
+        </div>
+
+        <div class="logo-text">
+
+            <h3>
+                UMKM Panel
+            </h3>
 
             <p>
-                Panel kontrol modern UMKM Tulungagung
+                Modern Admin Dashboard
             </p>
 
         </div>
 
-        <div class="nav flex-column">
+    </div>
 
-            <a class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"
-               href="{{ route('admin.dashboard') }}">
+    {{-- MENU --}}
+    <div class="sidebar-menu">
 
-                <i class="bi bi-speedometer2"></i>
+        <a href="{{ route('admin.dashboard') }}"
+           class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
 
-                Dashboard
+            <i class="bi bi-grid-1x2-fill"></i>
 
-            </a>
+            Dashboard
 
-            <a class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}"
-               href="{{ route('admin.users.index') }}">
+        </a>
 
-                <i class="bi bi-people"></i>
+        <a href="{{ route('admin.users.index') }}"
+           class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}">
 
-                Users
+            <i class="bi bi-people-fill"></i>
 
-            </a>
+            Users
 
-            <a class="nav-link {{ request()->routeIs('admin.products.*') ? 'active' : '' }}"
-               href="{{ route('admin.products.index') }}">
+        </a>
 
-                <i class="bi bi-box-seam"></i>
+        <a href="{{ route('admin.products.index') }}"
+           class="sidebar-link {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
 
-                Produk
+            <i class="bi bi-box-seam-fill"></i>
 
-            </a>
+            Produk
 
-            <a class="nav-link {{ request()->routeIs('admin.transactions.*') ? 'active' : '' }}"
-               href="{{ route('admin.transactions.index') }}">
+        </a>
 
-                <i class="bi bi-credit-card"></i>
+        <a href="{{ route('admin.transactions.index') }}"
+           class="sidebar-link {{ request()->routeIs('admin.transactions.*') ? 'active' : '' }}">
 
-                Transaksi
+            <i class="bi bi-receipt-cutoff"></i>
 
-            </a>
+            Transaksi
 
-            <a class="nav-link"
-               href="{{ route('admin.report.pdf') }}"
-               target="_blank">
+        </a>
 
-                <i class="bi bi-file-earmark-pdf"></i>
+        <a href="{{ route('admin.report.pdf') }}"
+           target="_blank"
+           class="sidebar-link">
 
-                Laporan PDF
+            <i class="bi bi-file-earmark-pdf-fill"></i>
 
-            </a>
+            Laporan PDF
+
+        </a>
+
+    </div>
+
+    {{-- LOGOUT --}}
+    <div class="logout-wrapper">
+
+        <form action="{{ route('logout') }}"
+              method="POST">
+
+            @csrf
+
+            <button type="submit"
+                    class="logout-btn">
+
+                <i class="bi bi-box-arrow-right me-2"></i>
+
+                Logout
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{{-- MAIN CONTENT --}}
+<div class="main-content fade-up">
+
+    {{-- TOPBAR --}}
+    <div class="topbar">
+
+        <div class="topbar-left">
+
+            <h1>
+                @yield('title')
+            </h1>
+
+            <p>
+                Monitor aktivitas sistem UMKM secara realtime
+            </p>
 
         </div>
 
-        <!-- FOOTER -->
-        <div class="sidebar-footer">
+        <div class="topbar-right">
 
-            <form method="POST"
-                  action="{{ route('logout') }}">
+            {{-- MOBILE MENU --}}
+            <button class="mobile-toggle"
+                    id="menuToggle">
 
-                @csrf
+                <i class="bi bi-list fs-4"></i>
 
-                <button class="logout-btn"
-                        type="submit">
+            </button>
 
-                    <i class="bi bi-box-arrow-right me-2"></i>
+            {{-- USER --}}
+            <div class="user-profile">
 
-                    Logout
+                <div class="user-avatar">
 
-                </button>
+                    <i class="bi bi-person-fill"></i>
 
-            </form>
+                </div>
+
+                <div class="user-info">
+
+                    <h6>
+                        {{ Auth::user()->name }}
+                    </h6>
+
+                    <p>
+                        Administrator
+                    </p>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-    <!-- MAIN -->
-    <div class="main-content">
+    {{-- ALERT --}}
+    @if(session('success'))
 
-        <!-- TOPBAR -->
-        <nav class="navbar topbar-modern justify-content-between">
+        <div class="alert alert-success alert-dismissible fade show mb-4">
 
-            <button class="menu-btn d-lg-none"
-                    id="menuToggle">
+            {{ session('success') }}
 
-                <i class="bi bi-list fs-5"></i>
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"></button>
 
-            </button>
+        </div>
 
-            <div class="d-flex align-items-center ms-auto">
+    @endif
 
-                <span class="user-badge">
+    @if(session('error'))
 
-                    <i class="bi bi-person-circle fs-5"></i>
+        <div class="alert alert-danger alert-dismissible fade show mb-4">
 
-                    {{ Auth::user()->name }}
+            {{ session('error') }}
 
-                </span>
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"></button>
 
-            </div>
+        </div>
 
-        </nav>
+    @endif
 
-        <!-- ALERT -->
-        @if(session('success'))
+    {{-- CONTENT --}}
+    <div class="content-wrapper">
 
-            <div class="alert alert-success alert-dismissible fade show">
-
-                {{ session('success') }}
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"></button>
-
-            </div>
-
-        @endif
-
-        @if(session('error'))
-
-            <div class="alert alert-danger alert-dismissible fade show">
-
-                {{ session('error') }}
-
-                <button type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"></button>
-
-            </div>
-
-        @endif
-
-        <!-- CONTENT -->
         @yield('content')
 
     </div>
 
+</div>
+
+{{-- BOOTSTRAP --}}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
 
-document.getElementById('menuToggle')?.addEventListener('click', function () {
+document.getElementById('menuToggle')?.addEventListener('click', function(){
 
-    document.getElementById('sidebar').classList.toggle('mobile-open');
+    document.getElementById('sidebar').classList.toggle('show');
 
 });
 
@@ -587,4 +808,5 @@ document.getElementById('menuToggle')?.addEventListener('click', function () {
 @stack('scripts')
 
 </body>
+
 </html>
